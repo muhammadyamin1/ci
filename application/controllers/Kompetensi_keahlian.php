@@ -93,6 +93,13 @@ class Kompetensi_keahlian extends CI_Controller
         $this->load->view('cetak/cetak_keahlian', array('query' => $query));
     }
 
+    public function cetak_keahlian_excel()
+    {
+        $this->load->library("excel");
+        $query = $this->model->read();
+        $this->load->view('cetak/cetak_keahlian_excel', array('query' => $query));
+    }
+
     public function read()
     {
         $query = $this->model->read();

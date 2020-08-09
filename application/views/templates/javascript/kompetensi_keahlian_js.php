@@ -116,6 +116,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
         $('#cetak_keahlian').click(function() {
             window.location.href = "<?php echo site_url('kompetensi_keahlian/cetak_keahlian'); ?>";
         })
+        $('#cetak_keahlian_excel').click(function() {
+            window.location.href = "<?php echo site_url('kompetensi_keahlian/cetak_keahlian_excel'); ?>";
+        })
     })
 </script>
 
