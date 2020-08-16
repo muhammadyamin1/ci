@@ -14,11 +14,23 @@ $excel->getActiveSheet()
     ->applyFromArray(
         array(
             'font'=>array(
-                'size'=>20
+                'size'=>20,
+                'color' => array('rgb' => 'FFFFFF'),
+                'bold'  => true
             ),
             'alignment'=>array(
                 'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
                 'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER
+            ),
+            'fill' => array(
+                'type'       => PHPExcel_Style_Fill::FILL_GRADIENT_LINEAR,
+                'rotation'   => 180,
+                'startcolor' => array(
+                    'rgb' => 'FF007D'
+                ),
+                'endcolor'   => array(
+                    'rgb' => 'AA00FF'
+                )
             )
         )
     );
