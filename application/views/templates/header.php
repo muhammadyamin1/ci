@@ -8,6 +8,73 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?php echo SITE_NAME . " : " . ucfirst($this->uri->segment(1)) . " - " . ucfirst($this->uri->segment(2)) ?></title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #263238;
+        }
+
+        .loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -24px;
+            margin-top: -22px;
+        }
+
+        .loader::after,
+        .loader::before {
+            content: '';
+            width: 48px;
+            height: 48px;
+            border: 2px solid #FFF;
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-sizing: border-box;
+            animation: rotation 2s ease-in-out infinite;
+        }
+
+        .loader::after {
+            border-color: #FF3D00;
+            animation-delay: 1s;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #preloader .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: white;
+        }
+        #preloader .logo{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -105px;
+            margin-top: -240px;
+        }
+    </style>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,6 +100,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    <div id="preloader">
+        <div class="logo">
+            <img src="<?php echo base_url(); ?>assets/dist/img/load.png">
+        </div>
+        <div class="text">
+            Pay SPP v1.0<br>
+            By : Muhammad Yamin
+        </div>
+        <div class="loader"></div>
+    </div>
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
