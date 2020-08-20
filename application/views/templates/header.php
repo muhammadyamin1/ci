@@ -71,7 +71,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             position: absolute;
             left: 50%;
             top: 50%;
-            margin-left: -105px;
+            margin-left: -102px;
             margin-top: -240px;
         }
     </style>
