@@ -227,4 +227,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             })
         });
     });
+    $(window).on("load", function() {
+        $("#preloader").fadeOut();
+        $("body").css('overflow','visible');
+    })
 </script>
