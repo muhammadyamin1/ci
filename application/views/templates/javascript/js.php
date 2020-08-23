@@ -48,13 +48,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
         });
     })
 
-    //Select Bootstrap
-    $('.select2bs4').select2({
-        theme: 'bootstrap4',
-        placeholder: "Pilih Kompetensi Keahlian",
-        allowClear: true
-    })
-
     //Tooltip
     $(function() {
         $('[data-toggle="tooltip"]').tooltip()

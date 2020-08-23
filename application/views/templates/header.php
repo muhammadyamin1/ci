@@ -97,6 +97,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- Select2 -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/dist/img/favicon.ico">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

@@ -27,7 +27,7 @@ class Kelas extends CI_Controller
 
     public function read(){
         $loadkompetensikeahlian = $this->model->load_kompetensi_keahlian();
-        $query = $this->db->query('SELECT * FROM siswa');
+        $query = $this->model->read();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -35,5 +35,6 @@ class Kelas extends CI_Controller
         $this->load->view('admin/kelas_view',array('query' => $query,'loadkeahlian' => $loadkompetensikeahlian));
         $this->load->view('templates/footer');
         $this->load->view('templates/javascript/js');
+        $this->load->view('templates/javascript/kelas_js');
     }
 }

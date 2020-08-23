@@ -79,7 +79,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     }
                 },
                 keahlian: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
             },
             messages: {
@@ -89,7 +90,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     remote: "ID Kompetensi Keahlian sudah ada !"
                 },
                 keahlian: {
-                    required: "Mohon untuk memasukkan Nama Kompetensi Keahlian"
+                    required: "Mohon untuk memasukkan Nama Kompetensi Keahlian",
+                    maxlength: "Nama Kompetensi Keahlian tidak boleh melebihi 50 karakter"
                 },
             },
             errorElement: 'span',
