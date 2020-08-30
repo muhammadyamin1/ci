@@ -15,7 +15,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
             "order": [
                 [2, 'asc']
             ],
-            "pageLength": 25
+            "pageLength": 25,
+            "language": {
+                "sProcessing": "Sedang proses...",
+                "sLengthMenu": "Tampilan _MENU_ entri",
+                "sZeroRecords": "Tidak ditemukan data yang sesuai",
+                "sInfo": "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+                "sInfoEmpty": "Tampilan 0 hingga 0 dari 0 entri",
+                "sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+                "sInfoPostFix": "",
+                "sSearch": "Cari:",
+                "sUrl": "",
+                "oPaginate": {
+                    "sFirst": "Awal",
+                    "sPrevious": "Balik",
+                    "sNext": "Lanjut",
+                    "sLast": "Akhir"
+                }
+            }
         });
 
         t.on('order.dt search.dt', function() {
@@ -43,7 +60,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     },
                     success: function(data) {
                         for (var i = 0; i < id.length; i++) {
-                            t.row('.selected').remove().draw( false );
+                            t.row('.selected').remove().draw(false);
                             Swal.mixin().fire({
                                 icon: 'success',
                                 title: 'Data berhasil dihapus'
@@ -68,6 +85,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 idkelas: {
                     required: true,
                     maxlength: 30,
+                    remote: {
+                        url: "<?php echo base_url('Kelas/check'); ?>",
+                        type: "post",
+                        data: {
+                            id: function() {
+                                return $("#idkelas").val();
+                            }
+                        }
+                    }
                 },
                 kelas: {
                     required: true,
@@ -81,6 +107,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 idkelas: {
                     required: "Mohon untuk memasukkan ID Kelas",
                     maxlength: "ID Kelas tidak boleh melebihi 30 karakter",
+                    remote: "ID Kelas sudah pernah digunakan !"
                 },
                 kelas: {
                     required: "Mohon untuk memasukkan Nama Kelas",
@@ -108,8 +135,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     //Tombol
     $(function() {
-        $('.keahlian-back').click(function() {
-            window.location.href = "<?php echo site_url('kompetensi_keahlian'); ?>";
+        $('.kelas-back').click(function() {
+            window.location.href = "<?php echo site_url('kelas'); ?>";
         })
         $('#cetak_keahlian').click(function() {
             window.location.href = "<?php echo site_url('kompetensi_keahlian/cetak_keahlian'); ?>";

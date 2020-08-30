@@ -15,7 +15,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
             "order": [
                 [2, 'asc']
             ],
-            "pageLength": 25
+            "pageLength": 25,
+            "language": {
+                "sProcessing": "Sedang proses...",
+                "sLengthMenu": "Tampilan _MENU_ entri",
+                "sZeroRecords": "Tidak ditemukan data yang sesuai",
+                "sInfo": "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+                "sInfoEmpty": "Tampilan 0 hingga 0 dari 0 entri",
+                "sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+                "sInfoPostFix": "",
+                "sSearch": "Cari:",
+                "sUrl": "",
+                "oPaginate": {
+                    "sFirst": "Awal",
+                    "sPrevious": "Balik",
+                    "sNext": "Lanjut",
+                    "sLast": "Akhir"
+                }
+            }
         });
 
         t.on('order.dt search.dt', function() {

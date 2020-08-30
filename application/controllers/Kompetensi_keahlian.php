@@ -61,7 +61,8 @@ class Kompetensi_keahlian extends CI_Controller
             $this->load->view('templates/breadcrumb', array('judul' => $this->judul));
             $this->load->view('admin/kompetensi_keahlian_update_view', array('model' => $this->model));
             $this->load->view('templates/footer');
-            $this->load->view('templates/js');
+            $this->load->view('templates/javascript/js');
+            $this->load->view('templates/javascript/kompetensi_keahlian_js');
         }
     }
 

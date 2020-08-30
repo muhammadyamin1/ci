@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!-- Main content -->
 <section class="content">
+  <div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"></div>
   <div class="row">
     <div class="col-md-10 col-sm-12">
       <div class="card card-primary">
@@ -11,7 +12,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" id="val_kelas" action="#" method="POST">
+        <form role="form" id="val_kelas" action="kelas/con_tambah" method="POST">
           <div class="card-body">
             <div class="form-group">
               <label for="idkelas">ID Kelas</label>
@@ -26,7 +27,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                   <select class="form-control select2bs4" style="width: 100%;" name="k_keahlian">
                     <option value=""></option>
                     <?php foreach($loadkeahlian as $lk) { ?>
-                    <option><?php echo $lk['nama_kompetensi_keahlian']." - (".$lk['id_kompetensi_keahlian'].")" ?></option>
+                    <option value="<?php echo $lk['id_kompetensi_keahlian']; ?>"><?php echo $lk['nama_kompetensi_keahlian']." - (".$lk['id_kompetensi_keahlian'].")" ?></option>
                     <?php } ?>
                   </select>
             </div>
@@ -34,7 +35,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <!-- /.card-body -->
 
           <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="btnSubmit">Submit</button>
           </div>
         </form>
       </div>
@@ -78,8 +79,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                   <td><?php echo $kolom['nama_kelas']; ?></td>
                   <td><?php echo $kolom['nama_kompetensi_keahlian']; ?></td>
                   <td style="width: 100px; text-align: center;">
-                    <a href="kompetensi_keahlian/con_edit" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
-                    <a href="kompetensi_keahlian/con_hapus" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')"><i class="fas fa-trash"></i></a>
+                    <a href="kelas/con_edit/<?php echo $id ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
+                    <a href="kelas/con_hapus/<?php echo $id ?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')"><i class="fas fa-trash"></i></a>
                   </td>
                 </tr>
               <?php } ?>
