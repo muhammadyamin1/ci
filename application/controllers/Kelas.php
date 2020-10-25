@@ -41,12 +41,6 @@ class Kelas extends CI_Controller
         $this->load->view('templates/javascript/kelas_js');
     }
 
-    public function check(){
-        $ID = $_POST['id'];
-        $this->check->set_id($ID);
-        $this->check->check();
-    }
-
     public function con_tambah(){
         if(isset($_POST['btnSubmit'])) {
             $this->model->id_kelas = $_POST['idkelas'];
@@ -87,10 +81,23 @@ class Kelas extends CI_Controller
         }
     }
 
+    public function check(){
+        $ID = $_POST['id'];
+        $this->check->set_id($ID);
+        $this->check->check();
+    }
+
     public function con_hapus($id){
         $this->model->id_kelas = $id;
         $this->model->delete();
         $this->session->set_flashdata('pesan', 'hapus');
         redirect('kelas');
+    }
+
+    public function deletechecked()
+    {
+        foreach ($_POST['id'] as $ID) {
+            $this->model->hapusterpilih($ID);
+        }
     }
 }

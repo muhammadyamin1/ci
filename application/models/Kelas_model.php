@@ -42,4 +42,9 @@ class Kelas_model extends CI_Model
         $this->db->where('id_kelas', $id);
         $this->db->delete('kelas');
     }
+
+    public function hapusterpilih($ID){
+        $this->db->where('id_kelas', $ID);
+        $this->db->delete('kelas');
+    }
 }

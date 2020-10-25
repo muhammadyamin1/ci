@@ -53,7 +53,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 alert("Pilih minimal satu data !");
             } else {
                 $.ajax({
-                    url: '<?php echo base_url('Kompetensi_keahlian/deletechecked'); ?>',
+                    url: '<?php echo base_url('Kelas/deletechecked'); ?>',
                     method: 'POST',
                     data: {
                         id: id
@@ -152,6 +152,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
         placeholder: "Pilih Kompetensi Keahlian",
         allowClear: true
     })
+    $('select').on('select2:close', function (e){
+        $(this).valid();
+    });
 </script>
 
 </body>
