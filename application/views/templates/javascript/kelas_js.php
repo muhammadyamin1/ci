@@ -49,7 +49,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             $(':checkbox:checked').each(function(i) {
                 id[i] = $(this).val();
             });
-            if (id.length === 0) {
+            console.log(id.length);
+            if (id.length === 0 || id.length === 1) {
                 alert("Pilih minimal satu data !");
             } else {
                 $.ajax({
