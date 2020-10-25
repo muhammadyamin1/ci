@@ -89,9 +89,14 @@ class Kelas extends CI_Controller
 
     public function con_hapus($id){
         $this->model->id_kelas = $id;
-        $this->model->delete();
-        $this->session->set_flashdata('pesan', 'hapus');
-        redirect('kelas');
+        $data = $this->model->delete();
+        if($data != 0){
+            $this->session->set_flashdata('pesan', 'gagalhapus');
+            redirect('kelas');
+        }else{
+            $this->session->set_flashdata('pesan', 'hapus');
+            redirect('kelas');
+        }
     }
 
     public function deletechecked()

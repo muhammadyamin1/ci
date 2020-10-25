@@ -29,9 +29,15 @@ class Kompetensi_keahlian_model extends CI_Model
     }
 
     public function delete(){
-        $id = $this->id_kompetensi_keahlian;
-        $this->db->where('id_kompetensi_keahlian', $id);
-        $this->db->delete('kompetensi_keahlian');
+        $sql="SELECT * FROM `kelas` WHERE id_kompetensi_keahlian = '$this->id_kompetensi_keahlian'";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() == 0) {
+            $id = $this->id_kompetensi_keahlian;
+            $this->db->where('id_kompetensi_keahlian', $id);
+            $this->db->delete('kompetensi_keahlian');
+        } else {
+            return $query->num_rows();
+        }
     }
 
     public function hapusterpilih($ID){

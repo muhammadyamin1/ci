@@ -69,9 +69,14 @@ class Kompetensi_keahlian extends CI_Controller
     public function con_hapus($id)
     {
         $this->model->id_kompetensi_keahlian = $id;
-        $this->model->delete();
-        $this->session->set_flashdata('pesan', 'hapus');
-        redirect('kompetensi_keahlian');
+        $data = $this->model->delete();
+        if($data != 0){
+            $this->session->set_flashdata('pesan', 'gagalhapus');
+            redirect('kompetensi_keahlian');
+        }else{
+            $this->session->set_flashdata('pesan', 'hapus');
+            redirect('kompetensi_keahlian');
+        }
     }
 
     public function check()

@@ -65,6 +65,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
             icon: 'success',
             title: 'Data berhasil dihapus'
         })
+    } else if (flashData == "gagalhapus") {
+        Toast.fire({
+            icon: 'error',
+            title: 'Data gagal dihapus !',
+            text: 'Kemungkinan besar, masih ada data yang saling berelasi'
+        })
     }
 
     //Alert

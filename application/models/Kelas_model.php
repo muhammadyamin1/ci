@@ -38,9 +38,15 @@ class Kelas_model extends CI_Model
     }
 
     public function delete(){
-        $id = $this->id_kelas;
-        $this->db->where('id_kelas', $id);
-        $this->db->delete('kelas');
+        $sql="SELECT * FROM `siswa` WHERE id_kelas = '$this->id_kelas'";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() == 0) {
+            $id = $this->id_kelas;
+            $this->db->where('id_kelas', $id);
+            $this->db->delete('kelas');
+        } else {
+            return $query->num_rows();
+        }
     }
 
     public function hapusterpilih($ID){
