@@ -101,8 +101,7 @@ class Kelas extends CI_Controller
 
     public function deletechecked()
     {
-        foreach ($_POST['id'] as $ID) {
-            $this->model->hapusterpilih($ID);
-        }
+        $ID = $_POST['id'];
+        $this->model->hapusterpilih($ID);
     }
 }

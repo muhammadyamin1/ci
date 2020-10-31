@@ -41,7 +41,7 @@ class Kompetensi_keahlian_model extends CI_Model
     }
 
     public function hapusterpilih($ID){
-        $this->db->where('id_kompetensi_keahlian', $ID);
+        $this->db->where_in('id_kompetensi_keahlian', $ID);
         $this->db->delete('kompetensi_keahlian');
     }
 }

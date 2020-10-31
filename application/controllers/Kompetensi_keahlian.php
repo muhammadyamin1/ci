@@ -88,9 +88,8 @@ class Kompetensi_keahlian extends CI_Controller
 
     public function deletechecked()
     {
-        foreach ($_POST['id'] as $ID) {
-            $this->model->hapusterpilih($ID);
-        }
+        $ID = $_POST['id'];
+        $this->model->hapusterpilih($ID);
     }
 
     public function cetak_keahlian()

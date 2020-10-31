@@ -50,7 +50,7 @@ class Kelas_model extends CI_Model
     }
 
     public function hapusterpilih($ID){
-        $this->db->where('id_kelas', $ID);
+        $this->db->where_in('id_kelas', $ID);
         $this->db->delete('kelas');
     }
 }
