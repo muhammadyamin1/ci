@@ -1,4 +1,4 @@
-See the demo : https://payspp.000webhostapp.com/
+See the demo : http://payspp.epizy.com/
 
 ###################
 What is CodeIgniter
