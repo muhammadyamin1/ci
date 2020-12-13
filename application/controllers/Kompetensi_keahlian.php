@@ -100,7 +100,6 @@ class Kompetensi_keahlian extends CI_Controller
 
     public function cetak_keahlian_excel()
     {
-        $this->load->library("excel");
         $query = $this->model->read();
         $this->load->view('cetak/cetak_keahlian_excel', array('query' => $query));
     }

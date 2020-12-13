@@ -1,13 +1,16 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-$excel = new PHPExcel();
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-$excel->setActiveSheetIndex(0);
-$excel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
-$excel->getActiveSheet()->getColumnDimension('B')->setWidth(24);
-$excel->getActiveSheet()->getColumnDimension('C')->setWidth(40);
-$excel->getActiveSheet()
+$spreadsheet = new Spreadsheet();
+
+$spreadsheet->setActiveSheetIndex(0);
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(6);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(24);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(40);
+$spreadsheet->getActiveSheet()
     ->mergeCells('A1:C1')
     ->setCellValue('A1','Data Kompetensi Keahlian')
     ->getStyle('A1')
@@ -19,79 +22,91 @@ $excel->getActiveSheet()
                 'bold'  => true
             ),
             'alignment'=>array(
-                'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-                'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER
+                'horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
             ),
             'fill' => array(
-                'type'       => PHPExcel_Style_Fill::FILL_GRADIENT_LINEAR,
+                'fillType'   => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
                 'rotation'   => 180,
-                'startcolor' => array(
+                'startColor' => array(
                     'rgb' => 'FF007D'
                 ),
-                'endcolor'   => array(
+                'endColor'   => array(
                     'rgb' => 'AA00FF'
                 )
             )
         )
     );
 
-$kolom_tabel = array("No","ID Kompetensi Keahlian","Nama Kompetensi Keahlian");
+    $kolom_tabel = array("No","ID Kompetensi Keahlian","Nama Kompetensi Keahlian");
 
-$kolom = 0;
-
-foreach ($kolom_tabel as $field){
-    $excel->getActiveSheet()->setCellValueByColumnAndRow($kolom, 3, $field);
-    $kolom++;
-}
-
-$baris_excel = 4;
-$no = 1;
-
-foreach ($query as $q){
-    $excel->getActiveSheet()->setCellValueByColumnAndRow(0, $baris_excel, $no.".");
-    $excel->getActiveSheet()->setCellValueByColumnAndRow(1, $baris_excel, $q['id_kompetensi_keahlian']);
-    $excel->getActiveSheet()->setCellValueByColumnAndRow(2, $baris_excel, $q['nama_kompetensi_keahlian']);
-    $no++;
-    $baris_excel++;
-}
-
-$excel->getActiveSheet()->getStyle('A3:C3')->applyFromArray(
-    array(
-        'font'=>array(
-            'bold'=>true
-        ),
-        'alignment'=>array(
-            'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-            'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER
-        ),
-        'borders'=>array(
-            'allborders'=>array(
-                'style'=>PHPExcel_Style_Border::BORDER_THIN
+    $kolom = 1;
+    
+    foreach ($kolom_tabel as $field){
+        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow($kolom, 3, $field);
+        $kolom++;
+    }
+    
+    $baris_excel = 4;
+    $no = 1;
+    
+    foreach ($query as $q){
+        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(1, $baris_excel, $no);
+        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(2, $baris_excel, $q['id_kompetensi_keahlian']);
+        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(3, $baris_excel, $q['nama_kompetensi_keahlian']);
+        $no++;
+        $baris_excel++;
+    }
+    
+    $spreadsheet->getActiveSheet()->getStyle('A3:C3')->applyFromArray(
+        array(
+            'font'=>array(
+                'bold'=>true
+            ),
+            'alignment'=>array(
+                'horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+            ),
+            'borders'=>array(
+                'allBorders'=>array(
+                    'borderStyle'=>\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                )
             )
         )
-    )
-);
-
-$excel->getActiveSheet()->getStyle('A4:C'.($baris_excel-1))->applyFromArray(
-    array(
-        'borders'=>array(
-            'allborders'=>array(
-                'style'=>PHPExcel_Style_Border::BORDER_THIN
+    );
+    
+    $spreadsheet->getActiveSheet()->getStyle('A4:C'.(--$baris_excel))->applyFromArray(
+        array(
+            'borders'=>array(
+                'allBorders'=>array(
+                    'borderStyle'=>\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                )
             )
         )
-    )
-);
-
-$excel->getActiveSheet()->getStyle('A4:B'.($baris_excel))->applyFromArray(
-    array(
-        'alignment'=>array(
-            'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-            'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER
+    );
+    
+    $spreadsheet->getActiveSheet()->getStyle('A4:B'.($baris_excel))->applyFromArray(
+        array(
+            'alignment'=>array(
+                'horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+            )
         )
-    )
-);
+    );
 
-$excel_writer = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
-header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment; filename="Data Kompetensi Keahlian.xlsx"');
-$excel_writer->save('php://output');
+    $spreadsheet->getActiveSheet()->getStyle('C4:C'.($baris_excel))->applyFromArray(
+        array(
+            'alignment'=>array(
+                'vertical'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+            )
+        )
+    );
+
+    $writer = new Xlsx($spreadsheet);
+    $filename = 'Laporan Kompetensi Keahlian';
+    
+    header('Content-Type: application/vnd.ms-excel');
+    header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+    header('Cache-Control: max-age=0');
+
+    $writer->save('php://output');
