@@ -114,7 +114,7 @@ define ('PDF_HEADER_TITLE', 'Pay SPP');
 /**
  * Header description string.
  */
-define ('PDF_HEADER_STRING', "by Muhammad Yamin\nwww.tcpdf.org");
+define ('PDF_HEADER_STRING', "by Muhammad Yamin\nhttps://github.com/muhammadyamin1/ci");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].

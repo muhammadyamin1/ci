@@ -9,7 +9,7 @@ $spreadsheet = new Spreadsheet();
 $spreadsheet->setActiveSheetIndex(0);
 $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(24);
-$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(40);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(57);
 $spreadsheet->getActiveSheet()
     ->mergeCells('A1:C1')
     ->setCellValue('A1','Data Kompetensi Keahlian')
@@ -101,6 +101,61 @@ $spreadsheet->getActiveSheet()
             )
         )
     );
+
+    date_default_timezone_set('Asia/Jakarta');
+    $tanggal = date('d-m-Y');
+    $hari = date('l', microtime($tanggal));
+    $hari_indonesia = array(
+        'Monday'  => 'Senin',
+        'Tuesday'  => 'Selasa',
+        'Wednesday' => 'Rabu',
+        'Thursday' => 'Kamis',
+        'Friday' => 'Jumat',
+        'Saturday' => 'Sabtu',
+        'Sunday' => 'Minggu'
+    );
+    $bulan = array(
+        '01' => 'Januari',
+        '02' => 'Februari',
+        '03' => 'Maret',
+        '04' => 'April',
+        '05' => 'Mei',
+        '06' => 'Juni',
+        '07' => 'Juli',
+        '08' => 'Agustus',
+        '09' => 'September',
+        '10' => 'Oktober',
+        '11' => 'November',
+        '12' => 'Desember',
+    );
+    $spreadsheet->getActiveSheet()
+        ->mergeCells('A'.($baris_excel+2).':C'.($baris_excel+2))
+        ->setCellValue('A'.($baris_excel+2),'-- Dicetak Pada '.$hari_indonesia[$hari].', '.date('d').' '.$bulan[date('m')].' '.date('Y').' Pukul '.date('H:i:s').' WIB --')
+        ->getStyle('A'.($baris_excel+2))
+        ->applyFromArray(
+            array(
+                'font'=>array(
+                    'size'=>12,
+                    'color' => array('rgb' => 'FFFFFF'),
+                    'bold'  => true,
+                    'italic' => true
+                ),
+                'alignment'=>array(
+                    'horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                    'vertical'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+                ),
+                'fill' => array(
+                    'fillType'   => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                    'rotation'   => 180,
+                    'startColor' => array(
+                        'rgb' => '008e9b'
+                    ),
+                    'endColor'   => array(
+                        'rgb' => '2c73d2'
+                    )
+                )
+            )
+        );
 
     $writer = new Xlsx($spreadsheet);
     $filename = 'Laporan Kompetensi Keahlian';

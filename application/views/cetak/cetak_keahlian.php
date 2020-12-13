@@ -1,40 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-//============================================================+
-// File name   : example_004.php
-// Begin       : 2008-03-04
-// Last Update : 2013-05-14
-//
-// Description : Example 004 for TCPDF class
-//               Cell stretching
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
-
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Cell stretching
- * @author Nicola Asuni
- * @since 2008-03-04
- */
-
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('TCPDF Example 004');
-$pdf->SetSubject('TCPDF Tutorial');
-$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+$pdf->SetAuthor('Muhammad Yamin');
+$pdf->SetTitle('Laporan Kompetensi Keahlian');
+$pdf->SetSubject('Hasil Laporan Kompetensi Keahlian');
+$pdf->SetKeywords('Pay SPP, Laporan Kompetensi Keahlian');
 
 // set default header data
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
@@ -127,7 +102,7 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
 
 //Close and output PDF document
 ob_clean();
-$pdf->Output('example_004.pdf', 'I');
+$pdf->Output('Laporan Kompetensi Keahlian.pdf', 'I');
 
 //============================================================+
 // END OF FILE
