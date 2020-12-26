@@ -12,7 +12,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <div class="overlay"></div>
 <div class="terminal">
   <h1>Error <span class="errorcode">404</span></h1>
-  <p class="output">Opss... Halaman yang anda cari tidak dapat ditemukan.</p>
+  <p class="output">Oops... Halaman yang anda cari tidak dapat ditemukan.</p>
   <p class="output">Halaman mungkin telah dihapus atau dirubah.</p>
   <p class="output">Anda bisa kembali ke halaman utama melalui link berikut : <br><a href="<?php echo base_url(); ?>">Kembali ke halaman utama</a>.</p>
   <p class="output">Good luck.</p>
