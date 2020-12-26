@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <html>
 <head>
     <title>Oops... Halaman Tidak Ditemukan</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/build/scss/_custom404.scss" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/dist/css/custom404.css" />
 </head>
 <body>
 <div class="noise"></div>
