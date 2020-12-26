@@ -31,7 +31,7 @@ class Kompetensi_keahlian extends CI_Controller
     public function con_tambah()
     {
         if (isset($_POST['btnSubmit'])) {
-            $this->model->id_kompetensi_keahlian = $_POST['idkeahlian'];
+            $this->model->id_kompetensi_keahlian = str_replace(' ','',$_POST['idkeahlian']);
             $this->model->nama_kompetensi_keahlian = $_POST['keahlian'];
             $this->model->insert();
             $this->session->set_flashdata('pesan', 'tambah');

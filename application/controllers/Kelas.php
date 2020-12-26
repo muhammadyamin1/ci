@@ -43,7 +43,7 @@ class Kelas extends CI_Controller
 
     public function con_tambah(){
         if(isset($_POST['btnSubmit'])) {
-            $this->model->id_kelas = $_POST['idkelas'];
+            $this->model->id_kelas = str_replace(' ','',$_POST['idkelas']);
             $this->model->nama_kelas = $_POST['kelas'];
             $this->model->id_kompetensi_keahlian = $_POST['k_keahlian'];
             $this->model->insert();
@@ -103,5 +103,15 @@ class Kelas extends CI_Controller
     {
         $ID = $_POST['id'];
         $this->model->hapusterpilih($ID);
+    }
+
+    public function cetak_kelas(){
+        $query = $this->model->read();
+        $this->load->view('cetak/cetak_kelas', array('query' => $query));
+    }
+
+    public function cetak_kelas_excel(){
+        $query = $this->model->read();
+        $this->load->view('cetak/cetak_kelas_excel', array('query' => $query));
     }
 }

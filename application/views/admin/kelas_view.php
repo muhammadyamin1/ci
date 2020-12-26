@@ -55,8 +55,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
         <div class="card-body">
           <button class="btn btn-danger mb-2" id="hapusterpilih"><i class="fas fa-trash"></i> Hapus Data Terpilih</button>
-          <button class="btn btn-secondary mb-2" id="cetak_keahlian"><i class="fas fa-file-pdf"></i> Cetak PDF</button>
-          <button class="btn btn-success mb-2" id="cetak_keahlian_excel"><i class="fas fa-file-excel"></i> Cetak Excel</button>
+          <button class="btn btn-secondary mb-2" id="cetak_kelas"><i class="fas fa-file-pdf"></i> Cetak PDF</button>
+          <button class="btn btn-success mb-2" id="cetak_kelas_excel"><i class="fas fa-file-excel"></i> Cetak Excel</button>
           <table id="tblkelas" class="table table-bordered table-striped">
             <thead>
               <tr>

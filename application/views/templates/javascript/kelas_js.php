@@ -139,11 +139,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
         $('.kelas-back').click(function() {
             window.location.href = "<?php echo site_url('kelas'); ?>";
         })
-        $('#cetak_keahlian').click(function() {
-            window.location.href = "<?php echo site_url('kompetensi_keahlian/cetak_keahlian'); ?>";
+        $('#cetak_kelas').click(function() {
+            window.location.href = "<?php echo site_url('kelas/cetak_kelas'); ?>";
         })
-        $('#cetak_keahlian_excel').click(function() {
-            window.location.href = "<?php echo site_url('kompetensi_keahlian/cetak_keahlian_excel'); ?>";
+        $('#cetak_kelas_excel').click(function() {
+            window.location.href = "<?php echo site_url('kelas/cetak_kelas_excel'); ?>";
         })
     })
 

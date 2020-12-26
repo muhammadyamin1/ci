@@ -8,11 +8,12 @@ $spreadsheet = new Spreadsheet();
 
 $spreadsheet->setActiveSheetIndex(0);
 $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(6);
-$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(24);
-$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(57);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(18);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(27);
+$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(39);
 $spreadsheet->getActiveSheet()
-    ->mergeCells('A1:C1')
-    ->setCellValue('A1','Data Kompetensi Keahlian')
+    ->mergeCells('A1:D1')
+    ->setCellValue('A1','Data Kelas')
     ->getStyle('A1')
     ->applyFromArray(
         array(
@@ -38,7 +39,7 @@ $spreadsheet->getActiveSheet()
         )
     );
 
-    $kolom_tabel = array("No","ID Kompetensi Keahlian","Nama Kompetensi Keahlian");
+    $kolom_tabel = array("No","ID Kelas","Nama Kelas","Kompetensi Keahlian");
 
     $kolom = 1;
     
@@ -52,13 +53,14 @@ $spreadsheet->getActiveSheet()
     
     foreach ($query as $q){
         $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(1, $baris_excel, $no);
-        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(2, $baris_excel, $q['id_kompetensi_keahlian']);
-        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(3, $baris_excel, $q['nama_kompetensi_keahlian']);
+        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(2, $baris_excel, $q['id_kelas']);
+        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(3, $baris_excel, $q['nama_kelas']);
+        $spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(4, $baris_excel, $q['nama_kompetensi_keahlian']);
         $no++;
         $baris_excel++;
     }
     
-    $spreadsheet->getActiveSheet()->getStyle('A3:C3')->applyFromArray(
+    $spreadsheet->getActiveSheet()->getStyle('A3:D3')->applyFromArray(
         array(
             'font'=>array(
                 'bold'=>true
@@ -75,7 +77,7 @@ $spreadsheet->getActiveSheet()
         )
     );
     
-    $spreadsheet->getActiveSheet()->getStyle('A4:C'.(--$baris_excel))->applyFromArray(
+    $spreadsheet->getActiveSheet()->getStyle('A4:D'.(--$baris_excel))->applyFromArray(
         array(
             'borders'=>array(
                 'allBorders'=>array(
@@ -85,7 +87,7 @@ $spreadsheet->getActiveSheet()
         )
     );
     
-    $spreadsheet->getActiveSheet()->getStyle('A4:B'.($baris_excel))->applyFromArray(
+    $spreadsheet->getActiveSheet()->getStyle('A4:C'.($baris_excel))->applyFromArray(
         array(
             'alignment'=>array(
                 'horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
@@ -94,7 +96,7 @@ $spreadsheet->getActiveSheet()
         )
     );
 
-    $spreadsheet->getActiveSheet()->getStyle('C4:C'.($baris_excel))->applyFromArray(
+    $spreadsheet->getActiveSheet()->getStyle('D4:D'.($baris_excel))->applyFromArray(
         array(
             'alignment'=>array(
                 'vertical'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
@@ -129,7 +131,7 @@ $spreadsheet->getActiveSheet()
         '12' => 'Desember',
     );
     $spreadsheet->getActiveSheet()
-        ->mergeCells('A'.($baris_excel+2).':C'.($baris_excel+2))
+        ->mergeCells('A'.($baris_excel+2).':D'.($baris_excel+2))
         ->setCellValue('A'.($baris_excel+2),'-- Dicetak Pada '.$hari_indonesia[$hari].', '.date('d').' '.$bulan[date('m')].' '.date('Y').' Pukul '.date('H:i:s').' WIB --')
         ->getStyle('A'.($baris_excel+2))
         ->applyFromArray(
@@ -158,7 +160,7 @@ $spreadsheet->getActiveSheet()
         );
 
     $writer = new Xlsx($spreadsheet);
-    $filename = 'Laporan Kompetensi Keahlian';
+    $filename = 'Laporan Kelas';
     
     header('Content-Type: application/vnd.ms-excel');
     header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
