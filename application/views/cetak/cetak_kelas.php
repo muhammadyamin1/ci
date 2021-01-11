@@ -7,9 +7,9 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Muhammad Yamin');
-$pdf->SetTitle('Laporan Kompetensi Keahlian');
-$pdf->SetSubject('Hasil Laporan Kompetensi Keahlian');
-$pdf->SetKeywords('Pay SPP, Laporan Kompetensi Keahlian');
+$pdf->SetTitle('Laporan Kelas');
+$pdf->SetSubject('Hasil Laporan Kelas');
+$pdf->SetKeywords('Pay SPP, Laporan Kelas');
 
 // set default header data
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
