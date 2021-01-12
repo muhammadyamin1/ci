@@ -113,6 +113,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 },
             },
             errorElement: 'span',
+            submitHandler: function(){
+                $('#btnSubmit').prop('disabled','disabled');
+                $('#btnSubmit').html("Loading <i class='fas fa-sync fa-spin'></i>");
+                $('#val_keahlian')[0].submit();
+            },
             errorPlacement: function(error, element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);

@@ -26,7 +26,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <!-- /.card-body -->
 
           <div class="card-footer">
-            <button type="submit" class="btn btn-primary" name="btnSubmit">Submit</button>
+            <button type="submit" class="btn btn-primary" name="btnSubmit" id="btnSubmit">Submit</button>
           </div>
         </form>
       </div>
