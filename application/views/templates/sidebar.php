@@ -50,8 +50,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview <?php echo $this->uri->segment(1) == 'kelas' || $this->uri->segment(1) == 'kompetensi_keahlian' ? 'menu-open' : '' ?>">
-                    <a href="#" class="nav-link <?php echo $this->uri->segment(1) == 'kelas' || $this->uri->segment(1) == 'kompetensi_keahlian' ? 'active' : '' ?>">
+                <li class="nav-item has-treeview <?php echo $this->uri->segment(1) == 'kelas' || $this->uri->segment(1) == 'kompetensi_keahlian' || $this->uri->segment(1) == 'siswa' ? 'menu-open' : '' ?>">
+                    <a href="#" class="nav-link <?php echo $this->uri->segment(1) == 'kelas' || $this->uri->segment(1) == 'kompetensi_keahlian' || $this->uri->segment(1) == 'siswa' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             Master Data
@@ -72,7 +72,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo base_url(); ?>siswa" class="nav-link">
+                            <a href="<?php echo base_url(); ?>siswa" class="nav-link <?php echo $this->uri->segment(1) == 'siswa' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Siswa</p>
                             </a>

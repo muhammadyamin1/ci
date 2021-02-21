@@ -39,6 +39,12 @@ class Judul extends CI_Model
                 "<a href='".base_url()."kompetensi_keahlian'>Kompetensi Keahlian</a>"
             ];
         }
+        else if($this->breadcrumb == "siswa"){
+            $this->breadcrumb = [
+                "Master Data",
+                "<a href='".base_url()."siswa'>Siswa</a>"
+            ];
+        }
         else{
             $this->breadcrumb = ["Breadcrumb Is Not Defined"];
         }
